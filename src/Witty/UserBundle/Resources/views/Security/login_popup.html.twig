@@ -1,0 +1,22 @@
+{% block fos_user_content %}
+{% if error %}
+    <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
+{% endif %}
+
+<form action="{{ path("fos_user_security_check") }}" method="post">
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+    <label for="username">Adresse e-mail ou Pseudo :{# 'security.login.username'|trans({}, 'FOSUserBundle') #}</label>
+    <input type="text" class="username" name="_username" value="{{ last_username }}" placeholder="monmail@mail.com" />
+
+    <label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
+    <input type="password" class="password" name="_password" placeholder="*****" />
+
+
+    <input type="checkbox" class="remember_me" name="_remember_me" value="on" />
+    <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
+
+    <input type="submit" class="_submit" name="_submit" value=""/>
+</form>
+
+{% endblock fos_user_content %}

@@ -1,0 +1,12 @@
+parameters:
+    witty.fs.class: Witty\ToolsBundle\Model\FileSystem
+    witty.s3.adapter.class: Witty\ToolsBundle\Service\Adapter\AmazonS3Adapter
+    witty.s3.class: AmazonS3
+
+    witty.twig.url_manager.class: Witty\ToolsBundle\Service\Twig\Extension\UrlManager
+    witty.twig.entity_manager.class: Witty\ToolsBundle\Service\Twig\Extension\EntityManager
+    witty.twig.custom_filters.class: Witty\ToolsBundle\Service\Twig\Extension\CustomFilters
+    witty.twig.custom_tags.class: Witty\ToolsBundle\Service\Twig\Extension\CustomTags
+    
+    witty.service.payment_manager.class: Witty\TransactionBundle\Service\PaymentManager
+    witty.adapter.paypal.class: Witty\TransactionBundle\Adapter\Paypal

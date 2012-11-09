@@ -1,0 +1,61 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+    {% stylesheets 'bundles/wittyuser/css/*.css' filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+    {% endstylesheets %}
+    
+    <link href='http://fonts.googleapis.com/css?family=Cabin+Sketch|Karla:400,400italic,700,700italic|Crete+Round' rel='stylesheet' type='text/css'>
+{% endblock %}
+
+{% block title %}My Witty Games - Connectez-vous{% endblock %}
+
+{% block content %}
+
+	<div id="container">
+
+		<div class="bloc">
+		
+			<a class="titre_popup bloc_titre">Se connecter</a>
+			{% if error %}
+				<div class="error">{{ error|trans({}, 'FOSUserBundle') }}</div>
+			{% endif %}
+
+			<form action="{{ path("fos_user_security_check") }}" method="post">
+				<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+				<label for="username">Adresse e-mail ou Pseudo :{# 'security.login.username'|trans({}, 'FOSUserBundle') #}</label>
+				<input type="text" class="username" name="_username" value="{{ last_username }}" placeholder="monmail@mail.com" />
+
+				<label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
+				<input type="password" class="password" name="_password" placeholder="*****" />
+
+
+				<input type="checkbox" class="remember_me" name="_remember_me" value="on" />
+				<label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
+				
+				<a class="texte_popuplogin3" href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié ?</a>
+				<input type="submit" class="_submit" name="_submit" value=""/>
+			</form>
+			
+
+		</div>
+		
+		<div class="bloc bloc2">
+			<a class="titre_popup bloc_titre">S'inscrire</a>
+			{# render "WittyUserBundle:Registration:register" #}
+			<form action="{{ path('fos_user_security_login') }}" {{ form_enctype(form_register) }} method="POST" class="fos_user_registration_register">
+				{{ form_widget(form_register) }}
+				{{ form_rest(form_register) }}
+				{# <p class="texte_popuplogin5">En vous inscrivant, vous acceptez<br/> nos <a class="conditions" href="{{ path('mwg_cgu') }}">conditions d'utilisation</a></p> #}
+				<div>
+					<input class="inscrire" type="submit" value="" />
+				</div>
+			</form>
+		</div>
+		
+		<div class="spacer"></div>
+
+	</div>
+
+{% endblock content %}

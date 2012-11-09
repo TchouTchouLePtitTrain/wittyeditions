@@ -1,4 +1,4 @@
-wittyeditions
-=============
+mywittygames
+============
 
-Le site de Witty Editions
+Le site de crowdsourcing / crowdfunding de Witty

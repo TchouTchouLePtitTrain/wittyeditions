@@ -1,0 +1,41 @@
+{# ATTENTION ! Pour l'instant Assetic ne gère pas les notations : {% stylesheets '@WittyBarBundle/Resources/public/css/*' filter='cssrewrite' %} #}
+{# Il faut donc pointer directement sur le bundle ... c'est l'issue #53 sur github -> à surveiller #}
+{% stylesheets 'bundles/wittybar/css/*.css' filter='cssrewrite' %}
+	<link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+{% endstylesheets %}
+
+
+<div id="bandeauHaut">
+	<div class="container_bandeau">
+
+		<nav id="menu_witty">
+			<ul>
+				<li> <a id="lien_mwg" class="btn_mwg lien_mw" href="{{ url_mwg }}" ></a></li>
+				{# <li> <a id="lien_mwn" class="btn_mwn lien_mw" href="{{ url_mwn }}" onclick="javascript:return false;"></a></li> #}
+				{#<li> <a id="lien_mws" class="btn_mws lien_mw" href="{{ url_mws }}" onclick="javascript:return false;"></a></li>#}
+			</ul>
+		</nav>
+		<div id="espace_login">
+			{% if app.user %}
+				<a class=" pseudo-connecte btn_deconnexion" href="{{ path('fos_user_security_logout') }}">x</a>
+				<a class="btn_profil" href="{{ path('fos_user_profile_edit') }}">
+					<p class="pseudo pseudo-connecte">
+						{{ app.user.label }}
+					</p>
+				</a>
+			{% else %}
+				<a class="iframe_login btn_sidentifier popup_caller:login" href="{{ path('fos_user_security_login') }}" onclick="javascript:return false;"></a>
+				<a class="pseudo btn_sinscrire popup_caller:register" href="{{ path('fos_user_registration_register') }}" onclick="javascript:return false;">
+					<span class="plus-pseudo">+</span>
+					<span class="txt-s-inscrire"> S'inscrire</span>
+				</a>
+			{% endif %}
+		</div>
+		
+	</div>    
+</div>
+
+
+{% javascripts 'bundles/wittybar/js/*.js' %}
+	<script src="{{ asset_url }}" type="text/javascript"></script>
+{% endjavascripts %}

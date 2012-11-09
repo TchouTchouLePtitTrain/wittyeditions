@@ -1,0 +1,61 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+    {% stylesheets 'bundles/wittyuser/css/*.css' filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+    {% endstylesheets %}
+    
+    <link href='http://fonts.googleapis.com/css?family=Cabin+Sketch|Karla:400,400italic,700,700italic|Crete+Round' rel='stylesheet' type='text/css'>
+{% endblock %}
+
+{% block title %}Mon Profil{% endblock %}
+
+{% block content %}
+
+<div id="container">
+
+	<p class="titrePage titrePageProfil">Mon profil</p>
+	<div id="blocContenuProfil">
+		<p class="titre_bloc">Informations personnelles</p>
+		<figure class="avatar">
+			<p class="texte_profil">Photo de profil :</p>
+			{% render "WittyUserBundle:Profile:avatar" %}
+		</figure>
+		<form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
+			{{ form_widget(form) }}
+			<div id="mettreajour">
+				<input type="submit" value=""/>
+			</div>
+		</form>
+		
+		<br/>
+		<br/>
+		
+	</div>			
+		
+		
+	<div id="blocContenuProfil2">
+		<p class="titre_bloc">Informations du compte</p>
+		<div  class="paragraphe">
+			<p class="texte_profil">Les projets que vous avez soutenus</p>
+			{% render "WittyUserBundle:Profile:displayRewards" %}
+		</div>
+		
+		<br/>
+		<div  class="paragraphe">
+			{% if user.credit > 0 %}
+				<p class="texte_profil">Votre crédit</p>
+				<p class="texte_profil2">Votre crédit est actuellement de {{ user.credit }} €</p>
+			{% endif %}
+		</div>
+		<br/>
+		<br/>
+	</div>
+	
+	<div class="spacer"></div>
+	
+</div>
+	
+	
+	
+{% endblock content %}

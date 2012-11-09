@@ -1,0 +1,17 @@
+
+	{% for userReward in userRewards %}
+		<p class="texte_profil2">{{ userReward.reward.project.title }} - {{ userReward.reward.title }}
+		{% for userRewardOption in app.user.getUserRewardOptionsByRewardId(userReward.reward.id) %}
+			<br/>
+			<p class="texte_profil2">
+				{{ userRewardOption.rewardOption.title }}
+			</p>
+			
+		{% endfor %}
+		
+		{% if userReward.reward.project.funded == 0 %}
+			<a href="{{ path('annuler_contrepartie', {'userRewardId': userReward.id}) }}" class="annuler_contrepartie">Annuler cette contrepartie</a>
+		{% endif %}
+	<br/>
+		<br/>
+	{% endfor %}

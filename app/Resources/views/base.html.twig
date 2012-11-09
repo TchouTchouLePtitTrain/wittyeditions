@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Witty Editions{% endblock %}</title>
+		
+		{% stylesheets 
+			'../app/Resources/public/css/reset.css' 
+			'../app/Resources/public/css/*.css'
+		%}
+			<link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+		{% endstylesheets %}
+		<link href='http://fonts.googleapis.com/css?family=Cabin+Sketch|Karla:400,400italic,700,700italic|Crete+Round' rel='stylesheet' type='text/css'>
+        {% block stylesheets %} {% endblock %}
+		
+		{% javascripts '../app/Resources/public/js/*' %}
+			<script src="{{ asset_url }}" type="text/javascript"></script>
+		{% endjavascripts %}
+		{# <script type="text/javascript">$.noConflict();</script> Si besoin est -> Ajout du mode no conflict de jquery pour garder la toolbar symfony #}
+		
+		<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+
+		<script>			
+			{# Google Analytics #}
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-17906341-1']);
+			_gaq.push(['_setDomainName', 'mywittygames.com']);
+			_gaq.push(['_setAllowLinker', true]);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+		
+		<header>
+			{% render "WittyBarBundle:Bar:display" %}
+		</header>
+        {% block content %}{% endblock %}
+		<footer>
+			{# render "WittyFooterBundle:Footer:display" #}
+		</footer>
+    
+    	
+    
+        {% if not(app.user) %}
+		
+			<div id="popup_login" class="popup login">
+				<div class="login_normal">
+					<div class="haut_popup">
+						<a class="titre_popup">Se connecter</a>
+						<a class="close">x</a>
+					</div>
+					<div class="champs_inscription">
+						{% render "FOSUserBundle:Security:loginPopup" %}
+					</div>
+					<a class="texte_popuplogin3" href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié ?</a>
+				</div>
+			</div>
+				
+			<div id="popup_register" class="popup register" type_popup="register">
+				<div class="login_normal">
+					<div class="haut_popup">
+						<a class="titre_popup">+ Inscrire ma boutique</a>
+						<a class="close">x</a>
+					</div>
+						{% render "WittyUserBundle:Registration:register" %}
+					<p class="texte_popuplogin5">En vous inscrivant, vous acceptez<br/> nos <a class="conditions">conditions d'utilisation</a></p>
+				</div>
+			</div>
+			
+		{% endif %}
+
+		{% block javascripts %} {% endblock %}
+			
+    </body>
+    
+    
+</html>

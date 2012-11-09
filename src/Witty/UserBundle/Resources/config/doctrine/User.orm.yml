@@ -1,0 +1,65 @@
+Witty\UserBundle\Entity\User:
+    type: entity
+    repositoryClass: Witty\UserBundle\Repository\UserRepository
+    table: user
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        createdAt:
+            type: datetime
+            nullable: false
+            column: created_at
+        updatedAt:
+            type: datetime
+            nullable: true
+            column: updated_at
+        firstname:
+            type: string
+            length: 31
+            fixed: false
+            nullable: true
+        lastname:
+            type: string
+            length: 31
+            fixed: false
+            nullable: true
+        address:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+        address2:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: address_2
+        city:
+            type: string
+            length: 63
+            fixed: false
+            nullable: true
+        postcode:
+            type: string
+            length: 5
+            fixed: false
+            nullable: true
+        country:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: country
+        credit:
+            type: decimal
+            nullable: false
+        phone:
+            type: string
+            length: 20
+            fixed: false
+            nullable: true

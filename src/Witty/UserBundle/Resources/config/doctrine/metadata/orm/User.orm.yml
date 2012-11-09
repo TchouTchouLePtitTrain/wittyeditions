@@ -1,0 +1,141 @@
+User:
+    type: entity
+    table: user
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        createdAt:
+            type: datetime
+            nullable: false
+            column: created_at
+        updatedAt:
+            type: datetime
+            nullable: false
+            column: updated_at
+        login:
+            type: string
+            length: 64
+            fixed: false
+            nullable: true
+        password:
+            type: string
+            length: 32
+            fixed: false
+            nullable: true
+        email:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+        firstname:
+            type: string
+            length: 31
+            fixed: false
+            nullable: true
+        lastname:
+            type: string
+            length: 31
+            fixed: false
+            nullable: true
+        address:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+        address2:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: address_2
+        city:
+            type: string
+            length: 63
+            fixed: false
+            nullable: true
+        postcode:
+            type: string
+            length: 5
+            fixed: false
+            nullable: true
+        description:
+            type: text
+            nullable: true
+        balance:
+            type: decimal
+            nullable: true
+        sex:
+            type: string
+            length: 7
+            fixed: false
+            nullable: true
+        avatar:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+        activationCode:
+            type: string
+            length: 32
+            fixed: false
+            nullable: true
+            column: activation_code
+        birthdate:
+            type: datetime
+            nullable: true
+        isEditor:
+            type: boolean
+            nullable: true
+            column: is_editor
+        isAuthor:
+            type: boolean
+            nullable: true
+            column: is_author
+        defaultLocale:
+            type: string
+            length: 2
+            fixed: false
+            nullable: false
+            column: default_locale
+        countryCode:
+            type: string
+            length: 3
+            fixed: false
+            nullable: true
+            column: country_code
+        fbId:
+            type: integer
+            unsigned: false
+            nullable: true
+            column: fb_id
+        loginDp:
+            type: string
+            length: 16
+            fixed: false
+            nullable: true
+            column: login_dp
+        passwordDp:
+            type: string
+            length: 16
+            fixed: false
+            nullable: true
+            column: password_dp
+        origine:
+            type: boolean
+            nullable: true
+    manyToOne:
+        level:
+            targetEntity: UserLevel
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                level_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

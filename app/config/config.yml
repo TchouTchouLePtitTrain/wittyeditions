@@ -1,0 +1,119 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: services.yml }
+    - { resource: design.yml }
+    
+services:
+    #PDO : config pour avoir les sessions stockées en base
+    pdo:
+        class: PDO
+        arguments:
+            dsn:      "mysql:host=%database_host%;dbname=%database_name%"
+            user:     %database_user%
+            password: %database_password%
+
+    session.handler.pdo:
+        class:     Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler
+        arguments: [@pdo, %pdo.db_options%]
+
+framework:
+    #esi:             ~
+    translator:      { fallback: %locale% }
+    secret:          %secret%
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: %kernel.debug%
+    form:            true
+    csrf_protection: true
+    validation:      { enable_annotations: true }
+    templating:      { engines: ['twig'] } #assets_version: SomeVersionScheme
+    default_locale:  %locale%
+    trust_proxy_headers: false # Whether or not the Request object should trust proxy headers (X_FORWARDED_FOR/HTTP_CLIENT_IP)
+    session:         
+        handler_id:     session.handler.pdo
+
+# Twig Configuration
+twig:
+    debug:            %kernel.debug%
+    strict_variables: %kernel.debug%
+    globals:
+        url_we: %witty.url_we%
+        url_mwg: %witty.url_mwg%
+        url_mwn: %witty.url_mwn%
+        url_mws: %witty.url_mws%
+        public_url_mwg: %witty.public_url_mwg%
+        witty_paypal_url: %witty.paypal.url%
+        witty_paypal_notify_url: %witty.paypal.notify_url%
+        witty_paypal_cancel_url: %witty.paypal.cancel_url%
+        witty_paypal_return_url: %witty.paypal.return_url%
+        witty_paypal_fees: %witty.paypal.fees%
+        witty_paypal_email_business: %witty.paypal.email_business%
+        url_witty_facebook: http://www.facebook.com/pages/My-Witty-Games/149984978360626
+        url_witty_twitter: http://twitter.com/MyWittyGames
+        url_witty_dailymotion: http://www.dailymotion.com/MyWittyGames
+        facebook_appId: 212621892102168
+
+# Assetic Configuration
+assetic:
+    debug:          %kernel.debug%
+    use_controller: false
+    #bundles:        [ ]
+    #java: /usr/bin/java
+    filters:
+        cssrewrite: ~
+        #closure:
+        #    jar: %kernel.root_dir%/Resources/java/compiler.jar
+        #yui_css:
+        #    jar: %kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   %database_driver%
+        host:     %database_host%
+        port:     %database_port%
+        dbname:   %database_name%
+        user:     %database_user%
+        password: %database_password%
+        charset:  UTF8
+        mapping_types: 
+            enum:       string
+            varbinary:  string
+            tinyblob:   text
+    orm:
+        auto_generate_proxy_classes: %kernel.debug%
+        auto_mapping: true
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: %mailer_transport%
+    host:      %mailer_host%
+    username:  %mailer_user%
+    password:  %mailer_password%
+    spool:     { type: memory }
+
+# FOSUser Configuration
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: Witty\UserBundle\Entity\User
+    service:
+        mailer: fos_user.mailer.default
+    from_email:
+        address:        contact@mywittygames.com
+        sender_name:    no-reply
+    profile: 
+        form: 
+            type: witty_user_profile
+            handler: witty_user.profile.form.handler
+    registration: 
+        form: 
+            type: witty_user_registration
+            handler: witty_user.registration.form.handler
+        confirmation:
+            from_email: # Use this node only if you don't want the global email address for the confirmation email
+                address: inscriptions@mywittygames.com
+                sender_name: no-reply
+            enabled: false # change to true for required email confirmation
+            template:   FOSUserBundle:Registration:email.txt.twi

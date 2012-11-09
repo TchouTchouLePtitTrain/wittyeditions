@@ -1,0 +1,100 @@
+<?php
+
+namespace Witty\UserBundle\Entity;
+
+use FOS\UserBundle\Entity\User as BaseUser;
+use Doctrine\ORM\Mapping as ORM;
+use Gaufrette\Filesystem;
+use Gaufrette\Adapter\AmazonS3 as AmazonS3Adapter;
+
+/**
+ * Witty\UserBundle\Entity\User
+ * @ORM\Entity(repositoryClass="Witty\UserBundle\Repository\UserRepository")
+ * @ORM\Table(name="user")
+ */
+class User extends BaseUser
+{
+    /**
+     * @var integer $id
+     */
+    protected $id;
+
+    /**
+     * @var \DateTime $createdAt
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime $updatedAt
+     */
+    private $updatedAt;
+
+    /**
+     * @var string $firstname
+     */
+    private $firstname;
+
+    /**
+     * @var string $lastname
+     */
+    private $lastname;
+
+    /**
+     * @var string $address
+     */
+    private $address;
+
+    /**
+     * @var string $address2
+     */
+    private $address2;
+
+    /**
+     * @var string $city
+     */
+    private $city;
+
+    /**
+     * @var string $postcode
+     */
+    private $postcode;
+
+    /**
+     * @var string $country
+     */
+    private $country;
+	
+    /**
+     * @var string $description
+     */
+    private $description;
+
+    /**
+     * @var float $credit
+     */
+    private $credit;
+	
+    /**
+     * @var string $phone
+     */
+    private $phone;
+	
+	
+	public function __construct(){
+	
+		parent::__construct();
+		$this->createdAt = new \Datetime();
+		$this->credit = 0;
+	}
+	
+	public function serialize()
+    {
+        return serialize(array($this->facebookId, parent::serialize()));
+    }
+
+    public function unserialize($data)
+    {
+        list($this->facebookId, $parentData) = unserialize($data);
+        parent::unserialize($parentData);
+    }
+}

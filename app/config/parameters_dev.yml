@@ -1,0 +1,43 @@
+parameters:
+    database_driver: pdo_mysql
+    database_host: mywittygames.cbcdvav5ui8j.eu-west-1.rds.amazonaws.com
+    database_port: null
+    database_name: wittyeditions_dev
+    database_user: mywittygames
+    database_password: mysql1105*
+    mailer_transport: smtp
+    mailer_host: localhost
+    mailer_user: contact@mywittygames.com
+    mailer_password: null
+    locale: fr
+    secret: 5af99ad00cc4fc1389f9fbb4349f7c347c93448b
+    database_path: null
+
+#Urls des sites Witty
+    witty.url_we: http://www.wittyeditions.com.local/
+    witty.url_mwg: http://www.mywittygames.com.local/
+    witty.url_mwn: http://www.mywittynews.com.local/
+    witty.url_mws: http://www.mywittyshop.com.local/
+    witty.public_url_mwg: http://87.91.25.164
+    
+#Paramètres des services
+    witty.s3.bucket: mywittygamesdev
+    witty.s3.endpoint: https://s3-eu-west-1.amazonaws.com/%witty.s3.bucket%/
+    witty.s3.options: 
+        key: AKIAICH4QGFKNEHOOZAA
+        secret: 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
+        
+    witty.paypal.ssl: ssl://www.sandbox.paypal.com
+    witty.paypal.url: https://www.sandbox.paypal.com/cgi-bin/webscr
+    witty.paypal.notify_url: transaction/success
+    witty.paypal.cancel_url: transaction/cancel
+    witty.paypal.return_url: transaction/return
+    witty.paypal.fees: 0.03
+    witty.paypal.email_business: mywittygames@gmail.com
+    witty.paypal.log.success.path: ../app/logs/paypal/success.log
+    
+    #Facebook
+    witty.facebook.app_id: 212621892102168
+    witty.facebook.secret: e6f2e33b87ff8154600659c8565f68bb
+    # witty.facebook.name: http://apps.facebook.com/mon-super-site-web/ # App Namespace
+    # api_facebook_server: %witty.url_mwg%

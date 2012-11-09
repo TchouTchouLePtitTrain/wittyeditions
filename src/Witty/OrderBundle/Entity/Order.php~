@@ -1,0 +1,37 @@
+<?php
+
+namespace Witty\OrderBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+//On doit escaper le nom de la table car "order" est un mot réservé de mysql
+
+/**
+ * Witty\OrderBundle\Entity\Order
+ *
+ * @ORM\Table(name="order")
+ * @ORM\Entity
+ */
+class Order
+{
+    /**
+     * @var integer $id
+     *
+     * @ORM\Column(name="id", type="bigint", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @ORM\OneToMany(targetEntity="OrderProduct", mappedBy="orderProduct")
+     */
+    protected $orderProducts;
+	
+    /**
+     * @ORM\OneToOne(targetEntity="Promo")
+     * @ORM\JoinColumn(name="promo_id", referencedColumnName="id")
+     **/
+    protected $promo;
+
+}
