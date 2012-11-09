@@ -10,12 +10,9 @@ class DefaultController extends Controller
 {
     /**
      * @Route("")
-     * @Template()
      */
-    public function commanderAction()
+    public function indexAction()
     {
-		$user = $this->container->get('security.context')->getToken()->getUser();
-		//var_dump($user);die('ok');
-        return array('name' => 'test');
+        return $this->redirect($this->generateUrl('order_commander'));
     }
 }
