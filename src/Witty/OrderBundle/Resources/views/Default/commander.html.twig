@@ -1,7 +1,7 @@
 {% extends "WittyWeBundle::layout.html.twig" %}
 
 {% block stylesheets %}
-    {% stylesheets 'bundles/wittymwg/css/*.css' filter='cssrewrite' %}
+    {% stylesheets 'bundles/wittyorder/css/*.css' filter='cssrewrite' %}
         <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
     {% endstylesheets %}
 {% endblock %}
@@ -11,7 +11,219 @@
 {% block content %}
 	
 	<div id="container">
-		TEST
+		<div class="titrePage">Bienvenue sur la plateforme de commande des professionnels</div>
+		<div class="spacer"></div>
+		<div class="filet"></div>
+		<div id="colonne">
+			<div class="texteGris descriptif">Descriptif</div>
+			<div class="texteGris prix">Prix</div>
+			<div class="texteGris qt">Quantité</div>
+			<div class="texteGris st">Sous-total</div>
+		</div>
+		
+		<div class="spacer"></div>
+		
+		<div class="jeu">
+			<div class="descriptif">
+				<img class="img_jeu" src="" alt=""/>
+				<div class="texte">ICE3</div>
+			</div>
+			<div class="prix">
+				<div class="texte">39.90 €</div>
+				<div class="texteGris" style="float:right; margin-right:50px; margin-top:40px;">x</div>
+			</div>
+			<div class="qt">
+				<form method="get" action="#" class="champs_nb" style="margin-top:30px">
+					<input type="text" name="nb_jeu" placeholder="1">
+				</form>
+				<div class="modulePlusMoins">
+					<a class="btn_plus"></a>
+					<a class="btn_moins"></a>
+				</div>
+				<div class="texteGris" style="float:right; margin-right:50px; margin-top:10px;">=</div>
+				
+			</div>
+			<div class="st">
+				<div class="texte">39.90 €</div>
+			</div>
+		</div>		
+		<div class="spacer"></div>
+		
+		<div class="jeu">
+			<div class="descriptif">
+				<img class="img_jeu" src="" alt=""/>
+				<div class="texte">ICE3</div>
+			</div>
+			<div class="prix">
+				<div class="texte">39.90 €</div>
+				<div class="texteGris" style="float:right; margin-right:50px; margin-top:40px;">x</div>
+			</div>
+			<div class="qt">
+				<form method="get" action="#" class="champs_nb" style="margin-top:30px">
+					<input type="text" name="nb_jeu" placeholder="1">
+				</form>
+				<div class="modulePlusMoins">
+					<a class="btn_plus"></a>
+					<a class="btn_moins"></a>
+				</div>
+				<div class="texteGris" style="float:right; margin-right:50px; margin-top:10px;">=</div>
+				
+			</div>
+			<div class="st">
+				<div class="texte">39.90 €</div>
+			</div>
+		</div>
+		<div class="spacer"></div>
+		
+		<div class="jeu">
+			<div class="descriptif">
+				<img class="img_jeu" src="" alt=""/>
+				<div class="texte">ICE3</div>
+			</div>
+			<div class="prix">
+				<div class="texte">39.90 €</div>
+				<div class="texteGris" style="float:right; margin-right:50px; margin-top:40px;">x</div>
+			</div>
+			<div class="qt">
+				<form method="get" action="#" class="champs_nb" style="margin-top:30px">
+					<input type="text" name="nb_jeu" placeholder="1">
+				</form>
+				<div class="modulePlusMoins">
+					<a class="btn_plus"></a>
+					<a class="btn_moins"></a>
+				</div>
+				<div class="texteGris" style="float:right; margin-right:50px; margin-top:10px;">=</div>
+				
+			</div>
+			<div class="st">
+				<div class="texte">39.90 €</div>
+			</div>
+		</div>
+		<div class="spacer"></div>
+		
+		<div class="jeu">
+			<div class="descriptif">
+				<img class="img_jeu" src="" alt=""/>
+				<div class="texte">ICE3</div>
+			</div>
+			<div class="prix">
+				<div class="texte">39.90 €</div>
+				<div class="texteGris" style="float:right; margin-right:50px; margin-top:40px;">x</div>
+			</div>
+			<div class="qt">
+				<form method="get" action="#" class="champs_nb" style="margin-top:30px">
+					<input type="text" name="nb_jeu" placeholder="1">
+				</form>
+				<div class="modulePlusMoins">
+					<a class="btn_plus"></a>
+					<a class="btn_moins"></a>
+				</div>
+				<div class="texteGris" style="float:right; margin-right:50px; margin-top:10px;">=</div>
+				
+			</div>
+			<div class="st">
+				<div class="texte">39.90 €</div>
+			</div>
+		</div>
+		<div class="spacer"></div>
+		
+		<div class="jeu">
+			<div class="descriptif">
+				<img class="img_jeu" src="" alt=""/>
+				<div class="texte">ICE3</div>
+			</div>
+			<div class="prix">
+				<div class="texte">39.90 €</div>
+				<div class="texteGris" style="float:right; margin-right:50px; margin-top:40px;">x</div>
+			</div>
+			<div class="qt">
+				<form method="get" action="#" class="champs_nb" style="margin-top:30px">
+					<input type="text" name="nb_jeu" placeholder="1">
+				</form>
+				<div class="modulePlusMoins">
+					<a class="btn_plus"></a>
+					<a class="btn_moins"></a>
+				</div>
+				<div class="texteGris" style="float:right; margin-right:50px; margin-top:10px;">=</div>
+				
+			</div>
+			<div class="st">
+				<div class="texte">39.90 €</div>
+			</div>
+		</div>
+		<div class="spacer"></div>
+		
+		<div class="jeu">
+			<div class="descriptif">
+				<img class="img_jeu" src="" alt=""/>
+				<div class="texte">ICE3</div>
+			</div>
+			<div class="prix">
+				<div class="texte">39.90 €</div>
+				<div class="texteGris" style="float:right; margin-right:50px; margin-top:40px;">x</div>
+			</div>
+			<div class="qt">
+				<form method="get" action="#" class="champs_nb" style="margin-top:30px">
+					<input type="text" name="nb_jeu" placeholder="1">
+				</form>
+				<div class="modulePlusMoins">
+					<a class="btn_plus"></a>
+					<a class="btn_moins"></a>
+				</div>
+				<div class="texteGris" style="float:right; margin-right:50px; margin-top:10px;">=</div>
+				
+			</div>
+			<div class="st">
+				<div class="texte">39.90 €</div>
+			</div>
+		</div>
+		<div class="spacer"></div>
+
+		<div class="filet"></div>
+		
+		<div id="code_franco">
+			<div class="codepromo">
+				<div class="texteGris" style="float:left; margin-top:10px; margin-right:20px;">Code promotionnel</div>
+				<form method="get" action="#" class="champs_codepromo">
+					<input type="text" name="nb_jeu" placeholder="Votre code">
+				</form>
+				<a class="btn_ok"></a>
+			</div>
+			<div class="spacer"></div>
+			<div class="texteRouge" style="margin-top:40px;">Le franco de port est atteint à partir de 300 €</div>
+		</div>
+		
+		<div id="calculTotalTexte">
+			<div class="texteGris" style="float:right;">Total de mon panier</div><br/>
+			<div class="texteGris" style="float:right;">Code promotionnel</div><br/>
+			<div class="texteGris" style="float:right;">Frais de port</div><br/>
+			<div class="texteGris" style="float:right;">Total HT</div><br/>
+			<div class="texteTotal" style="float:right;">Total TTC</div>
+		</div>
+		
+		<div id="calculTotalNb">
+			<div class="texteGris2" style="float:right;">124.50 €</div><br/>
+			<div class="texteGris2" style="float:right;">0 €</div><br/>
+			<div class="texteGris2" style="float:right;">10 €</div><br/>
+			<div class="texteGris2" style="float:right;">300.00 €</div><br/>
+			<div class="texteTotal2" style="float:right;">350.50 €</div>
+		</div>
+		
+		<div class="spacer"></div>
+		
+		<div class="filet" style="margin-top:30px; margin-bottom:30px;"></div>
+		
+		<a class="btn_valider"></a>
+		
+		<div class="spacer"></div>
+		
+		<div class="filet" style="margin-top:30px; margin-bottom:10px;"></div>
+		
+		<div id="footer">
+			<div class="texteFooter" style="float:left;">Service client :01 43 43 41 68 (prix d'un appel local) - contact@mywittygames.com</div>
+			<div class="texteFooter" style="float:right;">© 2012 Witty Editions - Tous droits réservés </div>
+		</div>
+		
 	</div>
    
    

@@ -14,7 +14,7 @@
 	display:block;
 	margin-left:auto;
 	margin-right:auto;
-	width:1000px;
+	width:960px;
 }
 
 #menu_witty{
@@ -31,7 +31,7 @@
 
 .btn_mwg{
 	display:block;
-	background-image: url(../images/btn_mwg_hover.png);
+	background-image: url(../images/btn_we.png);
  	background-repeat: no-repeat;
 	width: 116px;
   	height: 30px;

@@ -1,0 +1,290 @@
+/* Witty Editions Commander */
+
+#container{
+	display:block;
+	height:auto;
+	width:960px;
+	font-size:1em;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:30px;
+}
+
+.titrePage{
+	font-family:"Arial", Helvetica, sans-serif;
+	font-size:1.250em;
+	font-weight:bold;
+	margin-left:auto;
+	margin-right:auto;
+	float:left;
+	color:#383838;
+	margin-bottom:30px;
+}
+
+.filet {
+	display:block;
+    width:100%;
+	height:1px;
+	background-color:#e2dddb;
+	margin-bottom:20px;
+}
+
+/* Colonne */
+
+.descriptif{
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+	height:auto;
+	width:450px;
+	float:left;
+}
+
+.prix{
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+	height:auto;
+	width:170px;
+	float:left;
+}
+.qt{
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+	height:auto;
+	width:170px;
+	float:left;
+}
+.st{
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+	height:auto;
+	width:170px;
+	float:left;
+}
+
+#colonne{
+	display:block;
+	width:100%;
+	height:20px;
+	margin-bottom:20px;
+}
+
+/* jeux */
+
+.jeu{
+	display:block;
+	margin-bottom:12px;
+	height:100px;
+	width:100%;
+}
+
+.img_jeu{
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+	height:100px;
+	width:200px;
+	background-image:url(../images/img_jeux_ice3.png);
+	margin-right:70px;
+	float:left;
+}
+
+.texte{
+	font-family:"Arial", Helvetica, sans-serif;
+	font-size:1em;
+	font-weight:bold;
+	margin-left:auto;
+	margin-right:auto;
+	color:#383838;
+	float:left;
+	margin-top:40px;
+}
+
+.texteGris{
+	font-family:"Georgia", Times New Roman, Times, serif;
+	font-size:1em;
+	margin-left:auto;
+	margin-right:auto;
+	color:#b5b3b3;
+}
+
+.texteGris2{
+	font-family:"Arial", Helvetica, sans-serif;
+	font-size:1em;
+	font-weight:bold;
+	margin-left:auto;
+	margin-right:auto;
+	color:#b5b3b3;
+}
+
+.texteTotal{
+	font-family:"Georgia", Times New Roman, Times, serif;
+	font-size:1.125em;
+	margin-left:auto;
+	margin-right:auto;
+	color:#b5b3b3;
+	margin-top:10px;
+}
+
+.texteTotal2{
+	font-family:"Arial", Helvetica, sans-serif;
+	font-size:1.125em;
+	font-weight:bold;
+	margin-left:auto;
+	margin-right:auto;
+	color:#b5b3b3;
+	margin-top:10px;
+}
+
+.texteRouge{
+	font-family:"Georgia", Times New Roman, Times, serif;
+	font-size:1em;
+	margin-left:auto;
+	margin-right:auto;
+	color:#d83028;
+	font-weight:bold;
+}
+
+.texteFooter{
+	font-family:"Georgia", Times New Roman, Times, serif;
+	font-size:0.800em;
+	margin-left:auto;
+	margin-right:auto;
+	color:#b5b3b3;
+}
+
+.texteFooter:hover{
+	color:#383838;
+}
+
+/* champs nombre */
+
+.champs_nb input[type=text]{
+display:block;
+float:left;
+border:1px solid #e2dddb;
+width:41px;
+height:31px;
+background: url(../images/champs_nb.png) top left no-repeat;
+color:#424141;
+font-weight:bold;
+font-size:16px;
+padding:0 0 0 10px;
+margin-right:4px;
+}
+
+/* Module Plus Moins */
+
+.modulePlusMoins{
+display:block;
+float:left;
+margin-right:6px;
+}
+
+.btn_plus{
+display:block;
+height:14px;
+width:16px;
+background: url(../images/btn_plus_normal.png) no-repeat;
+cursor:pointer;
+}
+
+.btn_plus:hover{
+background: url(../images/btn_plus_hover.png) no-repeat;
+}
+
+.btn_moins{
+display:block;
+height:14px;
+width:16px;
+background: url(../images/btn_moins_normal.png) no-repeat;
+margin-top:4px;
+cursor:pointer;
+}
+
+.btn_moins:hover{
+background: url(../images/btn_moins_hover.png) no-repeat;
+}
+
+/* champs code promotionnel */
+
+.champs_codepromo input[type=text]{
+display:block;
+float:left;
+border:1px solid #e2dddb;
+width:200px;
+height:31px;
+background: url(../images/champs_nb.png) top left no-repeat;
+color:#424141;
+font-size:14px;
+padding:0 0 0 10px;
+}
+
+.btn_ok{
+display:block;
+height:34px;
+width:36px;
+background: url(../images/btn_ok_normal.png) no-repeat;
+cursor:pointer;
+float:left;
+}
+
+.btn_ok:hover{
+background: url(../images/btn_ok_hover.png) no-repeat;
+}
+
+/* Code + Franco */
+
+#code_franco{
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+	height:auto;
+	width:610px;
+	float:left;
+}
+
+/* calcul du total */
+
+#calculTotalTexte{
+	display:block;
+	margin-left:auto;
+	margin-right:20px;
+	height:auto;
+	width:150px;
+	float:left;
+}
+
+#calculTotalNb{
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+	height:auto;
+	width:100px;
+	float:left;
+}
+
+/* bouton valider */
+
+.btn_valider{
+display:block;
+height:50px;
+width:271px;
+background: url(../images/btn_valider_normal.png) no-repeat;
+cursor:pointer;
+float:right;
+}
+
+.btn_valider:hover{
+background: url(../images/btn_valider_hover.png) no-repeat;
+}
+
+#footer{
+	display:block;
+	height:20px;
+	width:100%;
+	margin-bottom:10px;
+}
