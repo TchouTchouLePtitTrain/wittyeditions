@@ -1,0 +1,15 @@
+/* Witty Editions Commande */
+
+#container{
+	display:block;
+	height:auto;
+	width:960px;
+}
+
+.titrePage{
+	font-family:"Arial", Helvetica, sans-serif;
+	font-size:0.750em;
+	font-weight:bold;
+	float:left;
+	color:#383838;
+}
