@@ -4,24 +4,24 @@
 
 /* Styles des éléments */
 body{
-	background-color: #f6f6f6;
+	background-color: #fff;
 }
 
 p{
 	font-family: font-family: Arial,Helvetica,sans-serif;
-	color: #786E6C;
+	color: #383838;
 }
 
 h1{
 	font-family: 'Cabin Sketch',cursive;
-	color: #514846;
+	color: #383838;
 	font-size: 1em;
 	line-height: 1.2;
 }
 
 h2{
 	font-family: 'Cabin Sketch',cursive;
-	color: #514846;
+	color: #383838;
 	font-size: 0.875em;
 	line-height: 1.2;
 }
@@ -36,29 +36,6 @@ input, textarea, select{
 
 /* Classes courantes */
 
-.titrePage{
-	font-family: 'Cabin Sketch', cursive;
-	display:block;
-	margin-left: auto;
-	margin-right: auto;
-	position: relative;
-	font-size:2.500em;
-	text-align:center;
-	margin-bottom:16px;
-}
-
-.descriptionPage{
-	font-family: 'Cabin Sketch', cursive;
-	display:block;
-	margin-left: auto;
-	margin-right: auto;
-	position: relative;
-	font-size:1.250em;
-	text-align:center;
-	line-height: 1.2;
-}
-
-
 .tabulation{
 	margin-left : 50px;
 }
@@ -68,13 +45,4 @@ input, textarea, select{
 
 footer{
 	bottom:0px;
-}
-
-/* Styles courants */
-.texte_bleu{
-	color: #4270BE;
-}
-
-.texte_centre{
-	margin: 0 auto;
 }
