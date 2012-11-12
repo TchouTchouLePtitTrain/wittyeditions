@@ -23,160 +23,36 @@
 		
 		<div class="spacer"></div>
 		
-		<div class="jeu">
-			<div class="descriptif">
-				<img class="img_jeu" src="" alt=""/>
-				<div class="texte">ICE3</div>
-			</div>
-			<div class="prix">
-				<div class="texte">39.90 €</div>
-				<div class="texteGris" style="float:right; margin-right:50px; margin-top:40px;">x</div>
-			</div>
-			<div class="qt">
-				<form method="get" action="#" class="champs_nb" style="margin-top:30px">
-					<input type="text" name="nb_jeu" placeholder="1">
-				</form>
-				<div class="modulePlusMoins">
-					<a class="btn_plus"></a>
-					<a class="btn_moins"></a>
-				</div>
-				<div class="texteGris" style="float:right; margin-right:50px; margin-top:10px;">=</div>
-				
-			</div>
-			<div class="st">
-				<div class="texte">39.90 €</div>
-			</div>
-		</div>		
-		<div class="spacer"></div>
+		<form id="form_commande" name="commande" method="post" action="{{ path('order_confirmationCommande') }}">
 		
-		<div class="jeu">
-			<div class="descriptif">
-				<img class="img_jeu" src="" alt=""/>
-				<div class="texte">ICE3</div>
-			</div>
-			<div class="prix">
-				<div class="texte">39.90 €</div>
-				<div class="texteGris" style="float:right; margin-right:50px; margin-top:40px;">x</div>
-			</div>
-			<div class="qt">
-				<form method="get" action="#" class="champs_nb" style="margin-top:30px">
-					<input type="text" name="nb_jeu" placeholder="1">
-				</form>
-				<div class="modulePlusMoins">
-					<a class="btn_plus"></a>
-					<a class="btn_moins"></a>
-				</div>
-				<div class="texteGris" style="float:right; margin-right:50px; margin-top:10px;">=</div>
-				
-			</div>
-			<div class="st">
-				<div class="texte">39.90 €</div>
-			</div>
-		</div>
-		<div class="spacer"></div>
+			<input type="hidden" id="customerOrders" value=""/>
 		
-		<div class="jeu">
-			<div class="descriptif">
-				<img class="img_jeu" src="" alt=""/>
-				<div class="texte">ICE3</div>
-			</div>
-			<div class="prix">
-				<div class="texte">39.90 €</div>
-				<div class="texteGris" style="float:right; margin-right:50px; margin-top:40px;">x</div>
-			</div>
-			<div class="qt">
-				<form method="get" action="#" class="champs_nb" style="margin-top:30px">
-					<input type="text" name="nb_jeu" placeholder="1">
-				</form>
-				<div class="modulePlusMoins">
-					<a class="btn_plus"></a>
-					<a class="btn_moins"></a>
+			{% for product in products %}
+				<div class="jeu">
+					<input class="unit_price" type="hidden" value="{{ product.unitPrice }}"/>
+					<div class="descriptif">
+						<img class="img_jeu" src="{{ url_asset('product', product.id, product.image) }}" alt="{{ product.title }}"/>
+						<div class="texte">{{ product.title }}</div>
+					</div>
+					<div class="prix">
+						<div class="texte affichage_prix">0 €</div>
+						<div class="texteGris" style="float:right; margin-right:50px; margin-top:40px;">x</div>
+					</div>
+					<div class="qt">
+						<div class="champs_nb" style="margin-top:30px">
+							<input class="quantity" type="text" name="customerOrders[{{ product.id }}]" value="0">
+						</div>
+						<div class="modulePlusMoins">
+							<a class="btn_plus"></a>
+							<a class="btn_moins"></a>
+						</div>
+						<div class="texteGris" style="float:right; margin-right:50px; margin-top:10px;">=</div>
+						
+					</div>
+					<output class="st texte total">{{ product.unitPrice }} €</output>
 				</div>
-				<div class="texteGris" style="float:right; margin-right:50px; margin-top:10px;">=</div>
-				
-			</div>
-			<div class="st">
-				<div class="texte">39.90 €</div>
-			</div>
-		</div>
-		<div class="spacer"></div>
-		
-		<div class="jeu">
-			<div class="descriptif">
-				<img class="img_jeu" src="" alt=""/>
-				<div class="texte">ICE3</div>
-			</div>
-			<div class="prix">
-				<div class="texte">39.90 €</div>
-				<div class="texteGris" style="float:right; margin-right:50px; margin-top:40px;">x</div>
-			</div>
-			<div class="qt">
-				<form method="get" action="#" class="champs_nb" style="margin-top:30px">
-					<input type="text" name="nb_jeu" placeholder="1">
-				</form>
-				<div class="modulePlusMoins">
-					<a class="btn_plus"></a>
-					<a class="btn_moins"></a>
-				</div>
-				<div class="texteGris" style="float:right; margin-right:50px; margin-top:10px;">=</div>
-				
-			</div>
-			<div class="st">
-				<div class="texte">39.90 €</div>
-			</div>
-		</div>
-		<div class="spacer"></div>
-		
-		<div class="jeu">
-			<div class="descriptif">
-				<img class="img_jeu" src="" alt=""/>
-				<div class="texte">ICE3</div>
-			</div>
-			<div class="prix">
-				<div class="texte">39.90 €</div>
-				<div class="texteGris" style="float:right; margin-right:50px; margin-top:40px;">x</div>
-			</div>
-			<div class="qt">
-				<form method="get" action="#" class="champs_nb" style="margin-top:30px">
-					<input type="text" name="nb_jeu" placeholder="1">
-				</form>
-				<div class="modulePlusMoins">
-					<a class="btn_plus"></a>
-					<a class="btn_moins"></a>
-				</div>
-				<div class="texteGris" style="float:right; margin-right:50px; margin-top:10px;">=</div>
-				
-			</div>
-			<div class="st">
-				<div class="texte">39.90 €</div>
-			</div>
-		</div>
-		<div class="spacer"></div>
-		
-		<div class="jeu">
-			<div class="descriptif">
-				<img class="img_jeu" src="" alt=""/>
-				<div class="texte">ICE3</div>
-			</div>
-			<div class="prix">
-				<div class="texte">39.90 €</div>
-				<div class="texteGris" style="float:right; margin-right:50px; margin-top:40px;">x</div>
-			</div>
-			<div class="qt">
-				<form method="get" action="#" class="champs_nb" style="margin-top:30px">
-					<input type="text" name="nb_jeu" placeholder="1">
-				</form>
-				<div class="modulePlusMoins">
-					<a class="btn_plus"></a>
-					<a class="btn_moins"></a>
-				</div>
-				<div class="texteGris" style="float:right; margin-right:50px; margin-top:10px;">=</div>
-				
-			</div>
-			<div class="st">
-				<div class="texte">39.90 €</div>
-			</div>
-		</div>
+			{% endfor %}
+		</form>
 		<div class="spacer"></div>
 
 		<div class="filet"></div>
@@ -202,11 +78,11 @@
 		</div>
 		
 		<div id="calculTotalNb">
-			<div class="texteGris2" style="float:right;">124.50 €</div><br/>
-			<div class="texteGris2" style="float:right;">0 €</div><br/>
-			<div class="texteGris2" style="float:right;">10 €</div><br/>
-			<div class="texteGris2" style="float:right;">300.00 €</div><br/>
-			<div class="texteTotal2" style="float:right;">350.50 €</div>
+			<div class="texteGris2 total_panier" style="float:right;">0 €</div><br/>
+			<div class="texteGris2 code_promo" style="float:right;">0 €</div><br/>
+			<div class="texteGris2 frais_port" style="float:right;">0 €</div><br/>
+			<div class="texteGris2 total_ht" style="float:right;">0 €</div><br/>
+			<div class="texteTotal2 total_ttc" style="float:right;">0 €</div>
 		</div>
 		
 		<div class="spacer"></div>
@@ -225,6 +101,79 @@
 		</div>
 		
 	</div>
-   
-   
+
+{% endblock %}
+
+{% block javascripts %}
+    {% javascripts 'bundles/wittyorder/js/*.js' %}
+        <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
+	
+	<script>
+		var franco = {{ franco }};
+		var montant_frais_port = {{ frais_port }};
+		var tva = {{ tva }};
+
+		$(document).ready(function(){
+
+			recalculate();
+
+			$(".btn_plus").click(function (event){
+
+				var input = event.target.parentNode.parentNode.children.item(".champs_nb").children.item(".quantity");
+				input.value = parseInt(input.value) + 1;
+				recalculate();
+			});
+			$(".btn_moins").click(function (event){
+
+				var input = event.target.parentNode.parentNode.children.item(".champs_nb .quantity").children.item(".quantity");
+				
+				if (input.value > 0)
+				{
+					input.value = parseInt(input.value) - 1;
+					recalculate();
+				}
+			});
+			$(".quantity").keyup(function (event){
+			
+				if ( $(this).attr("value") != "") { recalculate(); }
+			});
+			
+			$('.btn_valider').click(function(){
+				$('#form_commande').submit();
+			});
+		});
+
+		function recalculate()
+		{
+			var total = 0;
+			
+			//Calcul du total pour chaque jeu
+			$('.jeu').each(function(){
+			
+				var prix = parseFloat($(this).children('.unit_price').attr("value"));
+				var quantity = parseInt($(this).children('.qt').children('.champs_nb').children('.quantity').attr("value"));
+				var total_jeu = Math.round(prix * quantity * 100) / 100;
+			
+				$(this).children('.total').html( (total_jeu) + "€");
+				total += total_jeu;
+			});
+			
+			//Calcul du total
+				//Total du panier
+			$(".total_panier").html( total + " €");
+			
+			var frais_port;
+			if (total > franco) { frais_port = 0; }
+			else { frais_port = montant_frais_port; }
+			
+			$(".frais_port").html( frais_port + " €");
+			
+			var total_ht = total + frais_port;
+			$(".total_ht").html( (total_ht) + " €");
+			
+			$(".total_ttc").html( Math.round(total_ht * (1 + tva) * 100) / 100 + " €" );
+			
+		}
+		</script>
 {% endblock %}

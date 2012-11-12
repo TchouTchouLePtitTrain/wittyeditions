@@ -7,41 +7,58 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
+use JMS\SecurityExtraBundle\Annotation\Secure;
 
 class OrderController extends Controller
 {
     /**
      * @Route("commander", name="order_commander")
      * @Template()
+	 * @Secure(roles="ROLE_USER")
      */
     public function commanderAction()
     {
-        return array();
+		$em = $this->getDoctrine()->getEntityManager();
+		$products = $em->getRepository('WittyOrderBundle:Product')->findAll();
+		
+        return array(
+			'products' => $products, 
+			'franco' => $this->container->getParameter('witty.distribution.franco'), 
+			'frais_port' => $this->container->getParameter('witty.distribution.frais_port'), 
+			'tva' => $this->container->getParameter('witty.distribution.tva')
+		);
     }
 	
     /**
-     * @Route("", name="order_confirmationCommande")
+     * @Route("confirmation-commande", name="order_confirmationCommande")
      * @Template()
+	 * @Secure(roles="ROLE_USER")
      */
     public function confirmationCommandeAction()
     {
-		
 		$em = $this->getDoctrine()->getEntityManager();
 		$user = $this->container->get('security.context')->getToken()->getUser();
 		$request = $this->getRequest();
-		$order = new Order();
-	
-		//Récupération du nombre de commandes
+		$order = new \Witty\OrderBundle\Entity\Order();
+
+		//Ajout de l'user
+		$order->setUser($user);
+		
+		//RÃ©cupÃ©ration du nombre de commandes
 		foreach($request->get('customerOrders') as $id_product => $quantity)
 		{
-			$product = $em->getRepository('WittyOrderBundle:Product')->find($id_product);
-		
-			$orderProduct = new OrderProduct();
-			$orderProduct->setProduct($product);
-			$orderProduct->setQuantity($quantity);
-			$orderProduct->setUnitPrice($product->getUnitPrice()); //"Redondance" de l'information unitPrice pour que l'on puisse changer le prix d'un Product sans en créer un nouveau, et tout de même garder l'historique du prix payé par l'utilisateur
+			if ($quantity > 0)
+			{
+				$product = $em->getRepository('WittyOrderBundle:Product')->find($id_product);
 			
-			$order->add(new OrderProduct());
+				$orderProduct = new \Witty\OrderBundle\Entity\OrderProduct();
+				$orderProduct->setProduct($product);
+				$orderProduct->setQuantity($quantity);
+				$orderProduct->setUnitPrice($product->getUnitPrice()); //"Redondance" de l'information unitPrice pour que l'on puisse changer le prix d'un Product sans en crÃ©er un nouveau, et tout de mÃªme garder l'historique du prix payÃ© par l'utilisateur
+
+				$order->addOrderProduct($orderProduct);
+				$orderProduct->setOrder($order);
+			}
 		}
 		
 		//Gestion de la promo
@@ -49,36 +66,40 @@ class OrderController extends Controller
 			if ($promo =$em->getRepository('WittyOrderBundle:Promo')->find($customerPromo))
 				$orderProduct->setPromo($promo);
 	
+		//Gestion du franco
+		if ($order->getHtAmount() >= $this->container->getParameter('witty.distribution.franco')) $order->setShipping(0);
+		else $order->setShipping($this->container->getParameter('witty.distribution.frais_port'));
+	
 		//Persistence de la commande
 		$em->persist($order);
 		$em->flush();
 	
 		//Envoi des mails
-			//Mail à l'utilisateur
+			//Mail Ã  l'utilisateur
 		$message = \Swift_Message::newInstance()
 		->setSubject('Confirmation de commande')
-		->setFrom($this->container->getParameter('witty.mail.expediteur'))
+		->setFrom($this->container->getParameter('witty.mail.order_expediteur'))
 		->setTo($user->getEmail())
-		->setBody('Bonjour et merci de votre commande.<br/><br/>Votre commande a bien été prise en compte.<br/>Vous la recevrez sous 3 jours maximum.<br/><br/>Ludiquement,<br/>La Witty Team<br/><br/>P.S: Ceci est un envoi automatique. Merci de ne pas répondre à cet email, il ne serait pas traité.');
+		->setBody('Bonjour et merci de votre commande.<br/><br/>Votre commande a bien Ã©tÃ© prise en compte.<br/>Vous la recevrez sous 3 jours maximum.<br/><br/>Ludiquement,<br/>La Witty Team<br/><br/>P.S: Ceci est un envoi automatique. Merci de ne pas rÃ©pondre Ã  cet email, il ne serait pas traitÃ©.');
 		
 		$this->get('mailer')->send($message);
 			
-			//Mail à la boîte contact
+			//Mail Ã  la boÃ®te contact
 		$message = \Swift_Message::newInstance()
 		->setSubject('Commande de '.$user->getLabel().' d\'un montant de '.$order->getTtcAmount())
-		->setFrom($this->container->getParameter('witty.mail.expediteur'))
+		->setFrom($this->container->getParameter('witty.mail.order_expediteur'))
 		->setTo($this->container->getParameter('witty.mail.contact'))
-		->setBody('Votre commande a bien été prise en compte.<br/>Vous la recevrez sous 3 jours maximum.<br/>Ludiquement,<br/>La Witty Team');
+		->setBody('Votre commande a bien Ã©tÃ© prise en compte.<br/>Vous la recevrez sous 3 jours maximum.<br/>Ludiquement,<br/>La Witty Team');
 		
 		$this->get('mailer')->send($message);
 			
 			
-			//Mail à Atlankit
+			//Mail Ã  Atlankit
 		$message = \Swift_Message::newInstance()
 		->setSubject('Commande de '.$user->getLabel())
-		->setFrom($this->container->getParameter('witty.mail.expediteur'))
+		->setFrom($this->container->getParameter('witty.mail.order_expediteur'))
 		->setTo($this->container->getParameter('witty.mail.contact'))
-		->setBody('Votre commande a bien été prise en compte.<br/>Vous la recevrez sous 3 jours maximum.<br/>Ludiquement,<br/>La Witty Team');
+		->setBody('Votre commande a bien Ã©tÃ© prise en compte.<br/>Vous la recevrez sous 3 jours maximum.<br/>Ludiquement,<br/>La Witty Team');
 		
 		$this->get('mailer')->send($message);
 		

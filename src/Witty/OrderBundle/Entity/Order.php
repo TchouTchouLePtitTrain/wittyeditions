@@ -24,7 +24,7 @@ class Order
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="OrderProduct", mappedBy="orderProduct", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="OrderProduct", mappedBy="order", cascade={"persist"})
      */
     protected $orderProducts;
 	
@@ -33,6 +33,12 @@ class Order
      * @ORM\JoinColumn(name="promo_id", referencedColumnName="id")
      **/
     protected $promo;
+	
+	/**
+     * @ORM\ManyToOne(targetEntity="\Witty\UserBundle\Entity\User", inversedBy="orders")
+	 * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    protected $user;
 
     /**
      * @var \DateTime $creationDate
@@ -40,13 +46,6 @@ class Order
      * @ORM\Column(name="creation_date", type="datetime", nullable=false)
      */
     private $creationDate;
-		
-    /**
-     * @var boolean $franco
-     *
-     * @ORM\Column(name="franco", type="boolean", nullable=false)
-     */
-    private $franco;
 	
     /**
      * @var decimal $shipping
@@ -99,7 +98,8 @@ class Order
     public function addOrderProduct(\Witty\OrderBundle\Entity\OrderProduct $orderProducts)
     {
         $this->orderProducts[] = $orderProducts;
-    
+		$this->recalculate();
+	
         return $this;
     }
 
@@ -132,6 +132,7 @@ class Order
     public function setPromo(\Witty\OrderBundle\Entity\Promo $promo = null)
     {
         $this->promo = $promo;
+		$this->recalculate();
     
         return $this;
     }
@@ -170,29 +171,6 @@ class Order
     }
 
     /**
-     * Set franco
-     *
-     * @param boolean $franco
-     * @return Order
-     */
-    public function setFranco($franco)
-    {
-        $this->franco = $franco;
-    
-        return $this;
-    }
-
-    /**
-     * Get franco
-     *
-     * @return boolean 
-     */
-    public function getFranco()
-    {
-        return $this->franco;
-    }
-
-    /**
      * Set shipping
      *
      * @param float $shipping
@@ -201,7 +179,8 @@ class Order
     public function setShipping($shipping)
     {
         $this->shipping = $shipping;
-    
+		$this->recalculate();
+		
         return $this;
     }
 
@@ -259,5 +238,43 @@ class Order
     public function getTtcAmount()
     {
         return $this->ttcAmount;
+    }
+	
+	private function recalculate()
+	{
+		$this->htAmount = 0;
+		
+		
+		//Calcul du total HT (sans les frais de port)
+		foreach($this->orderProducts as $orderProduct)
+		{
+			$this->htAmount += $orderProduct->getUnitPrice() * $orderProduct->getQuantity();
+		}
+		
+		//Calcul du total TTC (frais de port inclus)
+		$this->ttcAmount = $this->htAmount * 1.196 + $this->shipping;
+	}
+
+    /**
+     * Set user
+     *
+     * @param Witty\UserBundle\Entity\User $user
+     * @return Order
+     */
+    public function setUser(\Witty\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+    
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return Witty\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

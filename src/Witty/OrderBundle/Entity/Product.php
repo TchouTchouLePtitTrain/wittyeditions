@@ -20,13 +20,25 @@ class Product
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
-
+	
+	/**
+     * @ORM\OneToMany(targetEntity="OrderProduct", mappedBy="product")
+     **/
+	protected $orderProducts;
+	
     /**
      * @var string $title
      *
      * @ORM\Column(name="title", type="string", length=255, nullable=false)
      */
     private $title;
+		
+    /**
+     * @var string $catchphrase
+     *
+     * @ORM\Column(name="catchphrase", type="string", length=255, nullable=false)
+     */
+    private $catchphrase;
 	
     /**
      * @var string $image
@@ -48,6 +60,13 @@ class Product
      * @ORM\Column(name="prix_ht", type="decimal", precision=8, scale=2, nullable=false)
      */
     private $unitPrice;
+	
+    /**
+     * @var decimal $priority
+     *
+     * @ORM\Column(name="priority", type="integer", nullable=false)
+     */
+    private $priority;
 	
 
     /**
@@ -150,5 +169,45 @@ class Product
     public function getUnitPrice()
     {
         return $this->unitPrice;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->orderProducts = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add orderProducts
+     *
+     * @param Witty\OrderBundle\Entity\OrderProduct $orderProducts
+     * @return Product
+     */
+    public function addOrderProduct(\Witty\OrderBundle\Entity\OrderProduct $orderProducts)
+    {
+        $this->orderProducts[] = $orderProducts;
+    
+        return $this;
+    }
+
+    /**
+     * Remove orderProducts
+     *
+     * @param Witty\OrderBundle\Entity\OrderProduct $orderProducts
+     */
+    public function removeOrderProduct(\Witty\OrderBundle\Entity\OrderProduct $orderProducts)
+    {
+        $this->orderProducts->removeElement($orderProducts);
+    }
+
+    /**
+     * Get orderProducts
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getOrderProducts()
+    {
+        return $this->orderProducts;
     }
 }

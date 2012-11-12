@@ -6,9 +6,11 @@ parameters:
         db_time_col: session_time
     
     #Mails
-    witty.mail.expediteur_order:    no-reply@wittyeditions.com
+    witty.mail.order_expediteur:    no-reply@wittyeditions.com
     witty.mail.contact:             contact@mywittygames.com
     witty.mail.atlankit:            test@mywittygames.com
     
     #Métier
-    witty.metier.franco: 300
+    witty.distribution.franco: 300
+    witty.distribution.frais_port: 20
+    witty.distribution.tva: 0.196

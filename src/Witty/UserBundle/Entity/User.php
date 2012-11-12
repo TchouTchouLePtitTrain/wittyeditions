@@ -19,6 +19,11 @@ class User extends BaseUser
      */
     protected $id;
 
+	/**
+     * @ORM\OneToMany(targetEntity="\Witty\OrderBundle\Entity\Order", mappedBy="user")
+     **/
+	protected $orders;	
+	
     /**
      * @var \DateTime $createdAt
      */

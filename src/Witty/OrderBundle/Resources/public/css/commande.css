@@ -85,9 +85,9 @@
 	display:block;
 	margin-left:auto;
 	margin-right:auto;
-	height:100px;
-	width:200px;
-	background-image:url(../images/img_jeux_ice3.png);
+	max-height:100px;
+	max-width:200px;
+	/*background-image:url(../images/img_jeux_ice3.png);*/
 	margin-right:70px;
 	float:left;
 }

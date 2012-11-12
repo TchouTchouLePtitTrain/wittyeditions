@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Witty\OrderBundle\Entity\OrderProduct
  *
- * @ORM\Table(name="orderproduct")
+ * @ORM\Table(name="order_product")
  * @ORM\Entity
  */
 class OrderProduct
@@ -22,13 +22,14 @@ class OrderProduct
     private $id;
 	
 	/**
-	 * @ORM\ManyToOne(targetEntity="\Witty\UserBundle\Entity\User", inversedBy="orderProducts")
+	 * 
+	 * @ORM\ManyToOne(targetEntity="Order", inversedBy="orderProducts")
      * @ORM\JoinColumn(name="order_id", referencedColumnName="id")
      */
 	protected $order;
 	
 	/**
-     * @ORM\OneToOne(targetEntity="Product")
+     * @ORM\ManyToOne(targetEntity="Product", inversedBy="orderProducts")
 	 * @ORM\JoinColumn(name="product_id", referencedColumnName="id")
      */
     protected $product;
@@ -41,9 +42,9 @@ class OrderProduct
     private $quantity;
 	
     /**
-     * @var decimal $prixHT
+     * @var decimal $unitPrice
      *
-     * @ORM\Column(name="prix_ht", type="decimal", precision=8, scale=2, nullable=false)
+     * @ORM\Column(name="ht_price", type="decimal", precision=8, scale=2, nullable=false)
      */
     private $unitPrice;
 	
@@ -108,10 +109,10 @@ class OrderProduct
     /**
      * Set order
      *
-     * @param Witty\UserBundle\Entity\User $order
+     * @param Witty\OrderBundle\Entity\Order $order
      * @return OrderProduct
      */
-    public function setOrder(\Witty\UserBundle\Entity\User $order = null)
+    public function setOrder(\Witty\OrderBundle\Entity\Order $order = null)
     {
         $this->order = $order;
     
@@ -121,7 +122,7 @@ class OrderProduct
     /**
      * Get order
      *
-     * @return Witty\UserBundle\Entity\User 
+     * @return Witty\OrderBundle\Entity\Order 
      */
     public function getOrder()
     {

@@ -20,7 +20,12 @@ class Product
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
-
+	
+	/**
+     * @ORM\OneToMany(targetEntity="OrderProduct", mappedBy="product")
+     **/
+	protected $orderProducts;
+	
     /**
      * @var string $title
      *
@@ -48,13 +53,6 @@ class Product
      * @ORM\Column(name="prix_ht", type="decimal", precision=8, scale=2, nullable=false)
      */
     private $unitPrice;
-	
-    /**
-     * @var integer $weight
-     *
-     * @ORM\Column(name="weight", type="integer", nullable=false)
-     */
-    private $weight;
 	
 
     /**
@@ -158,27 +156,44 @@ class Product
     {
         return $this->unitPrice;
     }
-
     /**
-     * Set weight
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->orderProducts = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add orderProducts
      *
-     * @param integer $weight
+     * @param Witty\OrderBundle\Entity\OrderProduct $orderProducts
      * @return Product
      */
-    public function setWeight($weight)
+    public function addOrderProduct(\Witty\OrderBundle\Entity\OrderProduct $orderProducts)
     {
-        $this->weight = $weight;
+        $this->orderProducts[] = $orderProducts;
     
         return $this;
     }
 
     /**
-     * Get weight
+     * Remove orderProducts
      *
-     * @return integer 
+     * @param Witty\OrderBundle\Entity\OrderProduct $orderProducts
      */
-    public function getWeight()
+    public function removeOrderProduct(\Witty\OrderBundle\Entity\OrderProduct $orderProducts)
     {
-        return $this->weight;
+        $this->orderProducts->removeElement($orderProducts);
+    }
+
+    /**
+     * Get orderProducts
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getOrderProducts()
+    {
+        return $this->orderProducts;
     }
 }
