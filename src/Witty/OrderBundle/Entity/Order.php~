@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Witty\OrderBundle\Entity\Order
  *
- * @ORM\Table(name="order")
+ * @ORM\Table(name="`order`")
  * @ORM\Entity
  */
 class Order
@@ -24,7 +24,7 @@ class Order
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="OrderProduct", mappedBy="orderProduct")
+     * @ORM\OneToMany(targetEntity="OrderProduct", mappedBy="orderProduct", cascade={"persist"})
      */
     protected $orderProducts;
 	
@@ -34,4 +34,138 @@ class Order
      **/
     protected $promo;
 
+    /**
+     * @var \DateTime $creationDate
+     *
+     * @ORM\Column(name="creation_date", type="datetime", nullable=false)
+     */
+    private $creationDate;
+		
+    /**
+     * @var boolean $franco
+     *
+     * @ORM\Column(name="franco", type="boolean", nullable=false)
+     */
+    private $franco;
+	
+    /**
+     * @var decimal $shipping
+     *
+     * @ORM\Column(name="shipping", type="decimal", precision=8, scale=2, nullable=false)
+     */
+    private $shipping;
+
+    /**
+     * @var decimal $htAmount
+     *
+     * @ORM\Column(name="ht_amount", type="decimal", precision=8, scale=2, nullable=false)
+     */
+    private $htAmount;
+	
+    /**
+     * @var decimal $ttcAmount
+     *
+     * @ORM\Column(name="ttc_amount", type="decimal", precision=8, scale=2, nullable=false)
+     */
+    private $ttcAmount;
+
+
+	
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->orderProducts = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->creationDate = new \DateTime();
+    }
+    
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Add orderProducts
+     *
+     * @param Witty\OrderBundle\Entity\OrderProduct $orderProducts
+     * @return Order
+     */
+    public function addOrderProduct(\Witty\OrderBundle\Entity\OrderProduct $orderProducts)
+    {
+        $this->orderProducts[] = $orderProducts;
+    
+        return $this;
+    }
+
+    /**
+     * Remove orderProducts
+     *
+     * @param Witty\OrderBundle\Entity\OrderProduct $orderProducts
+     */
+    public function removeOrderProduct(\Witty\OrderBundle\Entity\OrderProduct $orderProducts)
+    {
+        $this->orderProducts->removeElement($orderProducts);
+    }
+
+    /**
+     * Get orderProducts
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getOrderProducts()
+    {
+        return $this->orderProducts;
+    }
+
+    /**
+     * Set promo
+     *
+     * @param Witty\OrderBundle\Entity\Promo $promo
+     * @return Order
+     */
+    public function setPromo(\Witty\OrderBundle\Entity\Promo $promo = null)
+    {
+        $this->promo = $promo;
+    
+        return $this;
+    }
+
+    /**
+     * Get promo
+     *
+     * @return Witty\OrderBundle\Entity\Promo 
+     */
+    public function getPromo()
+    {
+        return $this->promo;
+    }
+
+    /**
+     * Set creationDate
+     *
+     * @param \DateTime $creationDate
+     * @return Order
+     */
+    public function setCreationDate($creationDate)
+    {
+        $this->creationDate = $creationDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get creationDate
+     *
+     * @return \DateTime 
+     */
+    public function getCreationDate()
+    {
+        return $this->creationDate;
+    }
 }

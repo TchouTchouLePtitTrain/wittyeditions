@@ -12,8 +12,8 @@ use FOS\UserBundle\Model\UserInterface;
 
 class RegistrationController extends BaseController
 {
-	//Rien n'est modifié par rapport à la méthode du FOSUserBundle
-	//Le seul intérêt est de pouvoir charger le bon template (Witty/UserBundle/Resources/views/Registration/register.html.twig)
+	//Rien n'est modifiÃ© par rapport Ã  la mÃ©thode du FOSUserBundle
+	//Le seul intÃ©rÃªt est de pouvoir charger le bon template (Witty/UserBundle/Resources/views/Registration/register.html.twig)
     public function registerAction()
     {
         $form = $this->container->get('fos_user.registration.form');
@@ -65,7 +65,7 @@ class RegistrationController extends BaseController
         $user->setLastLogin(new \DateTime());
 
         $this->container->get('fos_user.user_manager')->updateUser($user);
-        $response = new RedirectResponse($this->container->get('router')->generate('mwg_accueil'));
+        $response = new RedirectResponse($this->container->get('router')->generate('we_accueil'));
         $this->authenticateUser($user, $response);
 
         return $response;
@@ -81,6 +81,6 @@ class RegistrationController extends BaseController
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
-        return new RedirectResponse($this->container->get('router')->generate('mwg_accueil'));
+        return new RedirectResponse($this->container->get('router')->generate('we_accueil'));
     }
 }

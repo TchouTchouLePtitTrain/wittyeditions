@@ -35,10 +35,10 @@ class RegistrationFormType extends BaseType
 					)
 				)
 			->add('username', 'text', array(
-					'label' => 'Pseudo', 
+					'label' => 'Nom de la boutique', 
 					'required' => false, 
 					'attr' => array(
-						'placeholder' => 'mon pseudo',
+						'placeholder' => 'boutique',
 						)
 					)
 				)

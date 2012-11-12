@@ -4,3 +4,11 @@ parameters:
         db_id_col:   session_id
         db_data_col: session_value
         db_time_col: session_time
+    
+    #Mails
+    witty.mail.expediteur_order:    no-reply@wittyeditions.com
+    witty.mail.contact:             contact@mywittygames.com
+    witty.mail.atlankit:            test@mywittygames.com
+    
+    #Métier
+    witty.metier.franco: 300

@@ -49,13 +49,6 @@ class Product
      */
     private $unitPrice;
 	
-    /**
-     * @var integer $weight
-     *
-     * @ORM\Column(name="weight", type="integer", nullable=false)
-     */
-    private $weight;
-	
 
     /**
      * Get id
@@ -157,28 +150,5 @@ class Product
     public function getUnitPrice()
     {
         return $this->unitPrice;
-    }
-
-    /**
-     * Set weight
-     *
-     * @param integer $weight
-     * @return Product
-     */
-    public function setWeight($weight)
-    {
-        $this->weight = $weight;
-    
-        return $this;
-    }
-
-    /**
-     * Get weight
-     *
-     * @return integer 
-     */
-    public function getWeight()
-    {
-        return $this->weight;
     }
 }
