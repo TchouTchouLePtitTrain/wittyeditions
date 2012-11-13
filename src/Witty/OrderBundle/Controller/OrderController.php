@@ -98,7 +98,7 @@ class OrderController extends Controller
 		$message = \Swift_Message::newInstance()
 		->setSubject('Commande de '.$user->getLabel())
 		->setFrom($this->container->getParameter('witty.mail.order_expediteur'))
-		->setTo($this->container->getParameter('witty.mail.contact'))
+		->setTo($this->container->getParameter('witty.mail.logisticien'))
 		->setBody('Votre commande a bien été prise en compte.<br/>Vous la recevrez sous 3 jours maximum.<br/>Ludiquement,<br/>La Witty Team');
 		
 		$this->get('mailer')->send($message);

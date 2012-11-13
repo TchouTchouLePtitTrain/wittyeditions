@@ -8,7 +8,7 @@ parameters:
     #Mails
     witty.mail.order_expediteur:    no-reply@wittyeditions.com
     witty.mail.contact:             contact@mywittygames.com
-    witty.mail.atlankit:            test@mywittygames.com
+    witty.mail.logisticien:         contact@mywittygames.com
     
     #Métier
     witty.distribution.franco: 300
