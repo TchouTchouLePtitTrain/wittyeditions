@@ -7,7 +7,7 @@
 	font-size:1em;
 	margin-left:auto;
 	margin-right:auto;
-	margin-top:30px;
+	margin-top:10px;
 }
 
 .titrePage{
@@ -39,7 +39,27 @@
 	width:450px;
 	float:left;
 }
+.descriptif_titre{
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+	height:auto;
+	width:410px;
+	float:left;
+}
+.descriptif .infos{
+	margin-left:150px;
+	margin-top:25px;
+}
 
+.prix_titre{
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+	height:auto;
+	width:210px;
+	float:left;
+}
 .prix{
 	display:block;
 	margin-left:auto;
@@ -47,6 +67,7 @@
 	height:auto;
 	width:170px;
 	float:left;
+	margin-top: 40px;
 }
 .qt{
 	display:block;
@@ -56,7 +77,24 @@
 	width:170px;
 	float:left;
 }
+.qt_titre{
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+	height:auto;
+	width:140px;
+	float:left;
+}
 .st{
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+	height:auto;
+	width:170px;
+	float:left;
+	margin-top:40px;
+}
+.st_titre{
 	display:block;
 	margin-left:auto;
 	margin-right:auto;
@@ -86,9 +124,8 @@
 	margin-left:auto;
 	margin-right:auto;
 	max-height:100px;
-	max-width:200px;
+	max-width:100px;
 	/*background-image:url(../images/img_jeux_ice3.png);*/
-	margin-right:70px;
 	float:left;
 }
 
@@ -100,7 +137,6 @@
 	margin-right:auto;
 	color:#383838;
 	float:left;
-	margin-top:40px;
 }
 
 .texteGris{
@@ -145,6 +181,15 @@
 	margin-left:auto;
 	margin-right:auto;
 	color:#d83028;
+	font-weight:bold;
+}
+
+.texteBleu{
+	font-family:"Georgia", Times New Roman, Times, serif;
+	font-size:1em;
+	margin-left:auto;
+	margin-right:auto;
+	color:#4270BE;
 	font-weight:bold;
 }
 
@@ -254,7 +299,7 @@ background: url(../images/btn_ok_hover.png) no-repeat;
 	margin-left:auto;
 	margin-right:20px;
 	height:auto;
-	width:150px;
+	width:200px;
 	float:left;
 }
 

@@ -12,5 +12,5 @@ parameters:
     
     #Métier
     witty.distribution.franco: 300
-    witty.distribution.frais_port: 20
+    witty.distribution.frais_port: 15
     witty.distribution.tva: 0.196

@@ -32,6 +32,13 @@ class Product
      * @ORM\Column(name="title", type="string", length=255, nullable=false)
      */
     private $title;
+		
+    /**
+     * @var string $catchphrase
+     *
+     * @ORM\Column(name="catchphrase", type="string", length=255, nullable=false)
+     */
+    private $catchphrase;
 	
     /**
      * @var string $image
@@ -53,6 +60,13 @@ class Product
      * @ORM\Column(name="prix_ht", type="decimal", precision=8, scale=2, nullable=false)
      */
     private $unitPrice;
+	
+    /**
+     * @var decimal $priority
+     *
+     * @ORM\Column(name="priority", type="integer", nullable=false)
+     */
+    private $priority;
 	
 
     /**

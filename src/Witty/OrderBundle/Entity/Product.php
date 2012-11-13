@@ -210,4 +210,50 @@ class Product
     {
         return $this->orderProducts;
     }
+
+    /**
+     * Set catchphrase
+     *
+     * @param string $catchphrase
+     * @return Product
+     */
+    public function setCatchphrase($catchphrase)
+    {
+        $this->catchphrase = $catchphrase;
+    
+        return $this;
+    }
+
+    /**
+     * Get catchphrase
+     *
+     * @return string 
+     */
+    public function getCatchphrase()
+    {
+        return $this->catchphrase;
+    }
+
+    /**
+     * Set priority
+     *
+     * @param integer $priority
+     * @return Product
+     */
+    public function setPriority($priority)
+    {
+        $this->priority = $priority;
+    
+        return $this;
+    }
+
+    /**
+     * Get priority
+     *
+     * @return integer 
+     */
+    public function getPriority()
+    {
+        return $this->priority;
+    }
 }

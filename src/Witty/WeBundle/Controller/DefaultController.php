@@ -15,4 +15,13 @@ class DefaultController extends Controller
     {
         return $this->redirect($this->generateUrl('order_commander'));
     }
+	
+    /**
+     * @Route("cgv", name="we_cgv")
+	 * @Template()
+     */
+    public function cgvAction()
+    {
+        return array();
+    }
 }
