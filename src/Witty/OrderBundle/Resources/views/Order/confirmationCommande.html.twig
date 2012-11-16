@@ -1,7 +1,7 @@
 {% extends "WittyWeBundle::layout.html.twig" %}
 
 {% block stylesheets %}
-    {% stylesheets 'bundles/wittymwg/css/*.css' filter='cssrewrite' %}
+    {% stylesheets 'bundles/wittyorder/css/*.css' filter='cssrewrite' %}
         <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
     {% endstylesheets %}
 {% endblock %}
@@ -11,11 +11,15 @@
 {% block content %}
 	
 	<div id="container">
-		<p class="texte" style="margin: 200px 500px;">
+		<p class="texte_confirmation">
 			Merci d'avoir commandé chez Witty Editions !<br/>
-			Vous recevrez une facture par mail.<br/>
-			Votre commande vous sera livrée sous 72h<br/>
 		</p>
+		<p class="texte_confirmation dessous">
+			Vous recevrez une facture par mail, et votre commande vous sera livrée sous 72h.<br/>
+		</p>
+		<div class="blocTitrePage">
+			<p class="descriptionPage descriptionPage_projet">A bientôt !</p>
+		</div>
 	</div>
    
    
