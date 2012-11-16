@@ -19,7 +19,7 @@ class OrderController extends Controller
     public function commanderAction()
     {
 		$em = $this->getDoctrine()->getEntityManager();
-		$products = $em->getRepository('WittyOrderBundle:Product')->findAll();
+		$products = $em->getRepository('WittyOrderBundle:Product')->findAllOrderedByPriority();
 		
         return array(
 			'products' => $products, 

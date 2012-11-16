@@ -8,15 +8,25 @@
     <link href='http://fonts.googleapis.com/css?family=Cabin+Sketch|Karla:400,400italic,700,700italic|Crete+Round' rel='stylesheet' type='text/css'>
 {% endblock %}
 
-{% block title %}My Witty Games - Connectez-vous{% endblock %}
+{% block title %}My Witty Games - Bienvenue{% endblock %}
 
 {% block content %}
 
 	<div id="container">
 
+		<div class="blocTitrePage">
+			<p class="titrePage titrePage_projet">Bienvenue</p>
+			<p class="descriptionPage descriptionPage_projet">Identifiez-vous pour accéder au module de commande de Witty Editions</p>
+		</div>
+		<div>
+			<p class="descriptionPage descriptionPage_projet aide_deja_venu">Déjà venu ?</p>
+			<p class="descriptionPage descriptionPage_projet aide_pas_inscrit">Pas encore inscrit ?</p>
+			<div class="spacer"></div>
+		</div>
+	
 		<div class="bloc">
 		
-			<a class="titre_popup bloc_titre">Se connecter</a>
+			<a class="titre_popup bloc_titre">S'identifier</a>
 			{% if error %}
 				<div class="error">{{ error|trans({}, 'FOSUserBundle') }}</div>
 			{% endif %}
@@ -24,7 +34,7 @@
 			<form action="{{ path("fos_user_security_check") }}" method="post">
 				<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
-				<label for="username">Adresse e-mail ou Pseudo :{# 'security.login.username'|trans({}, 'FOSUserBundle') #}</label>
+				<label for="username">Adresse e-mail ou Nom de la boutique :{# 'security.login.username'|trans({}, 'FOSUserBundle') #}</label>
 				<input type="text" class="username" name="_username" value="{{ last_username }}" placeholder="monmail@mail.com" />
 
 				<label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
@@ -54,6 +64,27 @@
 			</form>
 		</div>
 		
+		<div class="spacer"></div>
+		<div class="blocTitrePage">
+			<p class="descriptionPage descriptionPage_projet">Accédez à des conditions préférentielles</p>
+			<p class="texte">
+				- Franco de port à 300 € HT<br>
+				- Colisage à partir d'une boîte<br/>
+				- Livraison en 72h<br/>
+				- Paiement à 45 jours fin de mois<br/>
+			</p>
+		</div>
+		<div class="blocTitrePage">
+			<p class="descriptionPage descriptionPage_projet">Découvrez une interface simple pour passer vos commandes</p>
+		</div>
+		{% image '@WittyUserBundle/Resources/public/images/apercu_commande.png' %}
+			<img src="{{ asset_url }}" alt="Aperçu de l'interface de commande" style="float:right;" />
+		{% endimage %}
+		<div class="spacer"></div>
+		<br/>
+		<div class="blocTitrePage">
+			<p class="descriptionPage descriptionPage_projet">Inscrivez-vous maintenant sur cette page pour accéder à l'interface</p>
+		</div>
 		<div class="spacer"></div>
 
 	</div>

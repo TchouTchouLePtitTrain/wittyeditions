@@ -46,3 +46,24 @@ input, textarea, select{
 footer{
 	bottom:0px;
 }
+
+.titrePage {
+    display: block;
+    font-family: 'Cabin Sketch',cursive;
+    font-size: 2.5em;
+    margin-bottom: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    text-align: center;
+}
+.descriptionPage {
+    display: block;
+    font-family: 'Cabin Sketch',cursive;
+    font-size: 1.25em;
+    line-height: 1.2;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    text-align: center;
+}

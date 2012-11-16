@@ -19,7 +19,7 @@
 	background-color:#FFF;
 	border-radius:4px;
 	margin-bottom:20px;
-	margin-top:30px;
+	margin-top:10px;
 	display:block;
 	margin-left:10px;
 	margin-right:10px;
@@ -100,4 +100,39 @@
     font-size: 0.813em;
     font-weight: bold;
     margin-bottom: 10px;
+}
+
+
+.blocTitrePage{
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+.titrePage{
+	color:#4270be;
+}
+
+.descriptionPage{
+	color:#514846;
+}
+
+.aide_deja_venu{
+	float: left;
+	margin-left: 12px;
+	margin-right: 24%;
+	margin-bottom: 0px;
+}
+
+.aide_pas_inscrit{
+	float:left;
+	margin-left:0px;
+	margin-bottom:0px;
+}
+
+.texte{
+	font-family: 'Karla', sans-serif;
+	font-size:1em;
+	color:#666;
+	line-height: 1.5;
+	margin-bottom:10px;
 }
