@@ -340,3 +340,14 @@ background: url(../images/btn_valider_hover.png) no-repeat;
 	margin-top: 20px;
 	margin-bottom:50px;
 }
+
+
+.texte{
+	font-family:"Arial", Helvetica, sans-serif;
+	font-size:1em;
+	font-weight:bold;
+	margin-left:auto;
+	margin-right:auto;
+	color:#383838;
+	float:left;
+}
