@@ -80,7 +80,14 @@ class OrderController extends Controller
 		->setSubject('Confirmation de commande')
 		->setFrom($this->container->getParameter('witty.mail.order_expediteur'))
 		->setTo($user->getEmail())
-		->setBody('Bonjour et merci de votre commande.<br/><br/>Votre commande a bien été prise en compte.<br/>Vous la recevrez sous 3 jours maximum.<br/><br/>Ludiquement,<br/>La Witty Team<br/><br/>P.S: Ceci est un envoi automatique. Merci de ne pas répondre à cet email, il ne serait pas traité.');
+		->setBody('
+			Bonjour et merci de votre commande.
+			Votre commande a bien été prise en compte.
+			Vous la recevrez sous 3 jours maximum.
+			Ludiquement,
+			La Witty Team
+			
+			P.S: Ceci est un envoi automatique. Merci de ne pas répondre à cet email, il ne serait pas traité.');
 		
 		$this->get('mailer')->send($message);
 			
@@ -89,18 +96,19 @@ class OrderController extends Controller
 		->setSubject('Commande de '.$user->getLabel().' d\'un montant de '.$order->getTtcAmount())
 		->setFrom($this->container->getParameter('witty.mail.order_expediteur'))
 		->setTo($this->container->getParameter('witty.mail.contact'))
-		->setBody('Votre commande a bien été prise en compte.<br/>Vous la recevrez sous 3 jours maximum.<br/>Ludiquement,<br/>La Witty Team');
+		->setBody('Commande de '.$user->getLabel().' d\'un montant de '.$order->getTtcAmount());
 		
 		$this->get('mailer')->send($message);
 			
 			
 			//Mail à Atlankit
+		/*
 		$message = \Swift_Message::newInstance()
 		->setSubject('Commande de '.$user->getLabel())
 		->setFrom($this->container->getParameter('witty.mail.order_expediteur'))
 		->setTo($this->container->getParameter('witty.mail.logisticien'))
-		->setBody('Votre commande a bien été prise en compte.<br/>Vous la recevrez sous 3 jours maximum.<br/>Ludiquement,<br/>La Witty Team');
-		
+		->setBody('Commande de '.$user->getLabel().' d\'un montant de '.$order->getTtcAmount());
+		*/
 		$this->get('mailer')->send($message);
 		
 
