@@ -68,6 +68,13 @@ class Product
      */
     private $priority;
 	
+    /**
+     * @var boolean $stock
+     *
+     * @ORM\Column(name="stock", type="boolean", nullable=false)
+     */
+    private $stock;
+	
 
     /**
      * Get id
@@ -255,5 +262,28 @@ class Product
     public function getPriority()
     {
         return $this->priority;
+    }
+
+    /**
+     * Set stock
+     *
+     * @param boolean $stock
+     * @return Product
+     */
+    public function setStock($stock)
+    {
+        $this->stock = $stock;
+    
+        return $this;
+    }
+
+    /**
+     * Get stock
+     *
+     * @return boolean 
+     */
+    public function getStock()
+    {
+        return $this->stock;
     }
 }

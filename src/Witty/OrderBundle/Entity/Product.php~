@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Witty\OrderBundle\Entity\Product
  *
  * @ORM\Table(name="product")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Witty\OrderBundle\Repository\ProductRepository")
  */
 class Product
 {
@@ -67,6 +67,13 @@ class Product
      * @ORM\Column(name="priority", type="integer", nullable=false)
      */
     private $priority;
+	
+    /**
+     * @var boolean $stock
+     *
+     * @ORM\Column(name="stock", type="boolean", nullable=false)
+     */
+    private $stock;
 	
 
     /**
@@ -209,5 +216,51 @@ class Product
     public function getOrderProducts()
     {
         return $this->orderProducts;
+    }
+
+    /**
+     * Set catchphrase
+     *
+     * @param string $catchphrase
+     * @return Product
+     */
+    public function setCatchphrase($catchphrase)
+    {
+        $this->catchphrase = $catchphrase;
+    
+        return $this;
+    }
+
+    /**
+     * Get catchphrase
+     *
+     * @return string 
+     */
+    public function getCatchphrase()
+    {
+        return $this->catchphrase;
+    }
+
+    /**
+     * Set priority
+     *
+     * @param integer $priority
+     * @return Product
+     */
+    public function setPriority($priority)
+    {
+        $this->priority = $priority;
+    
+        return $this;
+    }
+
+    /**
+     * Get priority
+     *
+     * @return integer 
+     */
+    public function getPriority()
+    {
+        return $this->priority;
     }
 }

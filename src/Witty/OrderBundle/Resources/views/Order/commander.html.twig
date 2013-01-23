@@ -42,22 +42,26 @@
 							<a href="{{ product.link }}" target="_blank">Voir la fiche du jeu</a>
 						</div>
 					</div>
-					<div class="prix">
-						<div class="texte affichage_prix">{{ product.unitPrice }} €</div>
-						<div class="texteGris" style="float:right; margin-right:50px;">x</div>
-					</div>
-					<div class="qt">
-						<div class="champs_nb" style="margin-top:30px">
-							<input class="quantity" type="text" name="customerOrders[{{ product.id }}]" value="0">
+					{% if not(product.stock) %}
+						<p class="rupture">Désolé, {{ product.title }} est épuisé</p>
+					{% else %}
+						<div class="prix">
+							<div class="texte affichage_prix">{{ product.unitPrice }} €</div>
+							<div class="texteGris" style="float:right; margin-right:50px;">x</div>
 						</div>
-						<div class="modulePlusMoins">
-							<a class="btn_plus"></a>
-							<a class="btn_moins"></a>
+						<div class="qt">
+							<div class="champs_nb" style="margin-top:30px">
+								<input class="quantity" type="text" name="customerOrders[{{ product.id }}]" value="0">
+							</div>
+							<div class="modulePlusMoins">
+								<a class="btn_plus"></a>
+								<a class="btn_moins"></a>
+							</div>
+							<div class="texteGris" style="float:right; margin-right:50px; margin-top:10px;">=</div>
+							
 						</div>
-						<div class="texteGris" style="float:right; margin-right:50px; margin-top:10px;">=</div>
-						
-					</div>
-					<output class="st texte total">{{ product.unitPrice }} €</output>
+						<output class="st texte total">{{ product.unitPrice }} €</output>
+					{% endif %}
 				</div>
 			{% endfor %}
 		</form>

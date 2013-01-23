@@ -196,6 +196,16 @@
 	color:#383838;
 }
 
+.rupture{
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+	height:auto;
+	width:300px;
+	float:left;
+	margin-top: 40px;
+}
+
 /* champs nombre */
 
 .champs_nb input[type=text]{
