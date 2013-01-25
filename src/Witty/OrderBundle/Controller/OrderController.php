@@ -44,7 +44,7 @@ class OrderController extends Controller
 		//Ajout de l'user
 		$order->setUser($user);
 		
-		//Récupération du nombre de commandes
+		//Récupération et sauvegarde de la commande
 		foreach($request->get('customerOrders') as $id_product => $quantity)
 		{
 			if ($quantity > 0)
@@ -81,22 +81,34 @@ class OrderController extends Controller
 		->setFrom($this->container->getParameter('witty.mail.order_expediteur'))
 		->setTo($user->getEmail())
 		->setBody('
-			Bonjour et merci de votre commande.
-			Votre commande a bien été prise en compte.
-			Vous la recevrez sous 3 jours maximum.
-			Ludiquement,
-			La Witty Team
+Bonjour et merci de votre commande.
+Votre commande a bien été prise en compte.
+Vous la recevrez sous 3 jours maximum.
 			
-			P.S: Ceci est un envoi automatique. Merci de ne pas répondre à cet email, il ne serait pas traité.');
+Ludiquement,
+La Witty Team
+			
+P.S: Ceci est un envoi automatique. Merci de ne pas répondre à cet email, il ne serait pas traité.');
 		
 		$this->get('mailer')->send($message);
 			
 			//Mail à la boîte contact
+				//Construction du corps du message
+		$messageCommande = 
+			'Commande de '.$user->getLabel().' d\'un montant de '.$order->getTtcAmount().'
+Détail de la commande :';
+		foreach($order->getOrderProducts() as $orderProduct)
+		{
+			$messageCommande.= $orderProduct->getQuantity().' x '.$orderProduct->getProduct()->getTitle().' ('.$orderProduct->getProduct()->getUnitPrice().' € HT) = '.($orderProduct->getQuantity() * $orderProduct->getProduct()->getUnitPrice()).' € HT
+';
+		}
+		
+				//Envoi du mail
 		$message = \Swift_Message::newInstance()
 		->setSubject('Commande de '.$user->getLabel().' d\'un montant de '.$order->getTtcAmount())
 		->setFrom($this->container->getParameter('witty.mail.order_expediteur'))
 		->setTo($this->container->getParameter('witty.mail.contact'))
-		->setBody('Commande de '.$user->getLabel().' d\'un montant de '.$order->getTtcAmount());
+		->setBody($messageCommande);
 		
 		$this->get('mailer')->send($message);
 			
