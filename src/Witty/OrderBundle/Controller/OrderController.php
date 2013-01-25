@@ -95,24 +95,16 @@ P.S: Ceci est un envoi automatique. Merci de ne pas répondre à cet email, il n
 			//Mail à la boîte contact
 				//Construction du corps du message
 		$messageCommande = 
-			'Commande de '.$user->getLabel().' d\'un montant de '.$order->getTtcAmount().'
-Détail de la commande :';
+			"Commande de ".$user->getLabel()." d'un montant de ".$order->getTtcAmount()."
+Détail de la commande :
+
+";
 		foreach($order->getOrderProducts() as $orderProduct)
 		{
-			$messageCommande.= $orderProduct->getQuantity().' x '.$orderProduct->getProduct()->getTitle().' ('.$orderProduct->getProduct()->getUnitPrice().' € HT) = '.($orderProduct->getQuantity() * $orderProduct->getProduct()->getUnitPrice()).' € HT
+			$messageCommande.= '- '.$orderProduct->getQuantity().' x '.$orderProduct->getProduct()->getTitle().' ('.$orderProduct->getProduct()->getUnitPrice().' € HT) = '.($orderProduct->getQuantity() * $orderProduct->getProduct()->getUnitPrice()).' € HT
 ';
 		}
-		
-				//Envoi du mail
-		$message = \Swift_Message::newInstance()
-		->setSubject('Commande de '.$user->getLabel().' d\'un montant de '.$order->getTtcAmount())
-		->setFrom($this->container->getParameter('witty.mail.order_expediteur'))
-		->setTo($this->container->getParameter('witty.mail.contact'))
-		->setBody($messageCommande);
-		
-		$this->get('mailer')->send($message);
-			
-			
+
 			//Mail à Atlankit
 		/*
 		$message = \Swift_Message::newInstance()

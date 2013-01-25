@@ -32,7 +32,7 @@
 			<input type="hidden" id="customerOrders" value=""/>
 		
 			{% for product in products %}
-				<div class="jeu">
+				<div class="jeu {% if product.stock %} stock {% endif %}">
 					<input class="unit_price" type="hidden" value="{{ product.unitPrice }}"/>
 					<div class="descriptif">
 						<img class="img_jeu" src="{{ url_asset('product', product.id, product.image) }}" alt="{{ product.title }}"/>
@@ -166,7 +166,7 @@
 			var total_ht = 0;
 			
 			//Calcul du total pour chaque jeu
-			$('.jeu').each(function(){
+			$('.jeu.stock').each(function(){
 			
 				var prix = parseFloat($(this).children('.unit_price').attr("value"));
 				var quantity = parseInt($(this).children('.qt').children('.champs_nb').children('.quantity').attr("value"));
